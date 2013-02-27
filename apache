@@ -1,0 +1,5 @@
+#One-liner to get a list of all conf files that are associated with running apache instances and then echo out each one along with any lines in it that contain ServerName or ServerAlias.
+
+
+
+for conf in `ps auxw | grep httpd | awk '{print $NF}' |sort |uniq `; do echo $conf; grep ServerName $conf; echo ""; done
